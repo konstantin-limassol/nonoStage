@@ -115,7 +115,7 @@ export default function PlanPage() {
             <CardContent className="p-6">
               {/* Header */}
               <div className="mb-4 flex items-center justify-between">
-                <h2 className="text-2xl font-bold text-foreground">Debt Resolution</h2>
+                <h2 className="text-lg font-semibold text-foreground sm:text-xl">Debt Resolution</h2>
                 <button className="text-sm font-medium text-accent hover:underline">
                   Disclosures
                 </button>

@@ -102,9 +102,9 @@ export default function PlanPage() {
           </div>
         </header>
 
-        <main className="mx-auto max-w-2xl px-4 py-5 sm:px-6 sm:py-8 lg:px-8">
+        <main className="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
           {/* Personalized Greeting */}
-          <div className="mb-4 text-left">
+          <div className="mb-6 text-left">
             <p className="text-base text-foreground sm:text-lg">
               <span className="font-semibold text-accent">{userData.firstName}</span>, you are eligible for a debt resolution program!
             </p>

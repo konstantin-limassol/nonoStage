@@ -92,7 +92,7 @@ export function LeadForm() {
                 }
                 required
               >
-                <SelectTrigger id="debtAmount">
+                <SelectTrigger id="debtAmount" className="border-border/80 bg-background shadow-sm">
                   <SelectValue placeholder="Select debt amount" />
                 </SelectTrigger>
                 <SelectContent>
@@ -115,7 +115,7 @@ export function LeadForm() {
                 }
                 required
               >
-                <SelectTrigger id="debtType">
+                <SelectTrigger id="debtType" className="border-border/80 bg-background shadow-sm">
                   <SelectValue placeholder="Select debt type" />
                 </SelectTrigger>
                 <SelectContent>
@@ -137,7 +137,7 @@ export function LeadForm() {
                 }
                 required
               >
-                <SelectTrigger id="state">
+                <SelectTrigger id="state" className="border-border/80 bg-background shadow-sm">
                   <SelectValue placeholder="Select your state" />
                 </SelectTrigger>
                 <SelectContent>
@@ -203,6 +203,7 @@ export function LeadForm() {
                 <Input
                   id="firstName"
                   type="text"
+                  className="border-border/80 bg-background shadow-sm"
                   value={formData.firstName}
                   onChange={(e) =>
                     setFormData({ ...formData, firstName: e.target.value })
@@ -215,6 +216,7 @@ export function LeadForm() {
                 <Input
                   id="lastName"
                   type="text"
+                  className="border-border/80 bg-background shadow-sm"
                   value={formData.lastName}
                   onChange={(e) =>
                     setFormData({ ...formData, lastName: e.target.value })
@@ -229,6 +231,7 @@ export function LeadForm() {
               <Input
                 id="email"
                 type="email"
+                className="border-border/80 bg-background shadow-sm"
                 value={formData.email}
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
@@ -242,6 +245,7 @@ export function LeadForm() {
               <Input
                 id="phone"
                 type="tel"
+                className="border-border/80 bg-background shadow-sm"
                 placeholder="(555) 555-5555"
                 value={formData.phone}
                 onChange={(e) =>

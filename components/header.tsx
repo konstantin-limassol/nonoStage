@@ -12,13 +12,8 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-            <span className="text-lg font-bold text-primary-foreground">N</span>
-          </div>
-          <span className="text-xl font-semibold tracking-tight text-foreground">
-            Nono<span className="text-primary">Debt</span>
-          </span>
+        <Link href="/" className="text-xl font-bold tracking-tight text-foreground">
+          Nono<span className="text-accent">Debt</span>
         </Link>
 
         {/* Desktop Navigation */}

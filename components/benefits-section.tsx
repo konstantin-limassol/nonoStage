@@ -57,10 +57,10 @@ export function BenefitsSection() {
           {benefits.map((benefit) => (
             <div
               key={benefit.title}
-              className="group rounded-xl border border-border bg-background p-6 transition-all hover:border-primary/30 hover:shadow-lg"
+              className="group rounded-xl border border-border bg-card p-6 shadow-sm transition-all hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 transition-colors group-hover:bg-primary/20">
-                <benefit.icon className="h-6 w-6 text-primary" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-accent/10 transition-colors group-hover:bg-accent/20">
+                <benefit.icon className="h-6 w-6 text-accent" />
               </div>
               <h3 className="mt-4 text-lg font-semibold text-foreground">
                 {benefit.title}

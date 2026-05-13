@@ -52,7 +52,7 @@ export function Header() {
             <Phone className="h-4 w-4" />
             1-800-000-0000
           </a>
-          <Button asChild>
+          <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
             <Link href="#get-started">Get Free Quote</Link>
           </Button>
         </div>
@@ -105,7 +105,7 @@ export function Header() {
               1-800-000-0000
             </a>
             <div className="pt-2">
-              <Button asChild className="w-full">
+              <Button asChild className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
                 <Link href="#get-started" onClick={() => setMobileMenuOpen(false)}>
                   Get Free Quote
                 </Link>

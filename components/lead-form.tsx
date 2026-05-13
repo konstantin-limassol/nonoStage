@@ -70,12 +70,12 @@ export function LeadForm() {
       <div className="mb-6 flex items-center justify-center gap-2">
         <div
           className={`h-2 w-16 rounded-full ${
-            step >= 1 ? "bg-primary" : "bg-secondary"
+            step >= 1 ? "bg-accent" : "bg-secondary"
           }`}
         />
         <div
           className={`h-2 w-16 rounded-full ${
-            step >= 2 ? "bg-primary" : "bg-secondary"
+            step >= 2 ? "bg-accent" : "bg-secondary"
           }`}
         />
       </div>
@@ -278,7 +278,7 @@ export function LeadForm() {
 
         <Button
           type="submit"
-          className="w-full"
+          className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
           size="lg"
           disabled={step === 2 && !formData.tcpaConsent}
         >

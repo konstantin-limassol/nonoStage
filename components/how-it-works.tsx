@@ -50,13 +50,13 @@ export function HowItWorks() {
 
               <div className="relative flex flex-col items-center text-center">
                 {/* Step Number */}
-                <div className="absolute -top-2 right-1/2 translate-x-8 rounded-full bg-primary px-2 py-0.5 text-xs font-semibold text-primary-foreground lg:right-0 lg:translate-x-4">
+                <div className="absolute -top-2 right-1/2 translate-x-8 rounded-full bg-accent px-2 py-0.5 text-xs font-semibold text-accent-foreground lg:right-0 lg:translate-x-4">
                   {index + 1}
                 </div>
 
                 {/* Icon */}
-                <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-card shadow-md ring-1 ring-border">
-                  <step.icon className="h-9 w-9 text-primary" />
+                <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-card shadow-md ring-1 ring-accent/20">
+                  <step.icon className="h-9 w-9 text-accent" />
                 </div>
 
                 {/* Content */}

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { Phone, DollarSign, Calendar, Home, Info, Play } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -41,6 +41,24 @@ export default function PlanPage() {
   const [monthlyPayment, setMonthlyPayment] = useState(
     Math.round((minPayment + maxPayment) / 2)
   )
+  const [showStickyButton, setShowStickyButton] = useState(true)
+  const mainCtaRef = useRef<HTMLDivElement>(null)
+  
+  // Hide sticky button when main CTA is visible
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowStickyButton(!entry.isIntersecting)
+      },
+      { threshold: 0.5 }
+    )
+    
+    if (mainCtaRef.current) {
+      observer.observe(mainCtaRef.current)
+    }
+    
+    return () => observer.disconnect()
+  }, [])
   
   const estimates = calculateEstimates(userData.estimatedDebt, monthlyPayment)
 
@@ -87,8 +105,8 @@ export default function PlanPage() {
         <main className="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
           {/* Personalized Greeting */}
           <div className="mb-6 text-left">
-            <p className="text-lg text-foreground sm:text-xl">
-              <span className="font-bold">{userData.firstName}</span>, you are eligible for a debt resolution program!
+            <p className="text-base text-foreground sm:text-lg">
+              <span className="font-semibold text-accent">{userData.firstName}</span>, you are eligible for a debt resolution program!
             </p>
           </div>
 
@@ -223,7 +241,7 @@ export default function PlanPage() {
               </div>
 
               {/* CTA Button */}
-              <div className="mt-6">
+              <div ref={mainCtaRef} className="mt-6">
                 <Button
                   asChild
                   size="lg"
@@ -309,18 +327,20 @@ export default function PlanPage() {
         </footer>
 
         {/* Sticky Mobile CTA */}
-        <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-border bg-card p-4 shadow-lg sm:hidden">
-          <Button
-            asChild
-            size="lg"
-            className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
-          >
-            <a href="tel:1-800-000-0000">
-              <Phone className="mr-2 h-4 w-4" />
-              (800) 000-0000
-            </a>
-          </Button>
-        </div>
+        {showStickyButton && (
+          <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-border bg-card p-4 shadow-lg sm:hidden">
+            <Button
+              asChild
+              size="lg"
+              className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
+            >
+              <a href="tel:1-800-000-0000">
+                <Phone className="mr-2 h-4 w-4" />
+                (800) 000-0000
+              </a>
+            </Button>
+          </div>
+        )}
       </div>
     </TooltipProvider>
   )

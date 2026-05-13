@@ -4,6 +4,9 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  /* Font variable set by Next.js */
+  --font-poppins: 'Poppins', system-ui, sans-serif;
+  
   /* Professional financial brand - Deep navy blue with emerald green accents */
   --background: oklch(0.985 0.002 240);
   --foreground: oklch(0.18 0.03 245);

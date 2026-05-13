@@ -32,9 +32,9 @@ export function HeroSection() {
               Trusted by Thousands of Americans
             </div>
 
-            <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+            <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
               <span className="block">Say No to Debt.</span>
-              <span className="block text-accent">Say Yes to Freedom.</span>
+              <span className="block whitespace-nowrap text-accent">Say Yes to Freedom.</span>
             </h1>
 
             <p className="mt-6 text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl">

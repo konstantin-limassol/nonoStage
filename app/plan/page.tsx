@@ -112,9 +112,9 @@ export default function PlanPage() {
 
           {/* Main Debt Resolution Card */}
           <Card className="mb-8 overflow-hidden shadow-lg">
-            <CardContent className="p-4 sm:p-6">
+            <CardContent className="px-4 py-3 sm:p-5">
               {/* Header */}
-              <div className="mb-4 flex items-center justify-between">
+              <div className="mb-3 flex items-center justify-between">
                 <h2 className="text-lg font-semibold text-foreground sm:text-xl">Debt Resolution</h2>
                 <button className="text-sm font-medium text-accent hover:underline">
                   Disclosures

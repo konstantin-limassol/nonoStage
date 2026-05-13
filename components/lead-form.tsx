@@ -12,7 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { Checkbox } from "@/components/ui/checkbox"
+
 
 export function LeadForm() {
   const [step, setStep] = useState(1)
@@ -24,7 +24,6 @@ export function LeadForm() {
     email: "",
     phone: "",
     state: "",
-    tcpaConsent: false,
   })
   const [isSubmitted, setIsSubmitted] = useState(false)
 
@@ -256,26 +255,14 @@ export function LeadForm() {
             </div>
 
             {/* TCPA Consent */}
-            <div className="flex items-start gap-3 rounded-lg bg-secondary/50 p-3">
-              <Checkbox
-                id="tcpaConsent"
-                checked={formData.tcpaConsent}
-                onCheckedChange={(checked) =>
-                  setFormData({ ...formData, tcpaConsent: checked as boolean })
-                }
-                required
-                className="mt-0.5"
-              />
-              <Label
-                htmlFor="tcpaConsent"
-                className="text-xs leading-relaxed text-muted-foreground"
-              >
-                By checking this box, I consent to receive calls and text messages,
+            <div className="rounded-lg bg-secondary/50 p-3">
+              <p className="text-xs leading-relaxed text-muted-foreground">
+                Clicking &quot;Get My Free Quote&quot;, I consent to receive calls and text messages,
                 including by autodialer and prerecorded voice, from NonoDebt and its
                 marketing partners at the phone number provided. I understand consent
                 is not a condition of purchase. Message and data rates may apply.
                 Reply STOP to opt-out.
-              </Label>
+              </p>
             </div>
           </>
         )}
@@ -284,7 +271,6 @@ export function LeadForm() {
           type="submit"
           className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
           size="lg"
-          disabled={step === 2 && !formData.tcpaConsent}
         >
           {step === 1 ? "Continue" : "Get My Free Quote"}
         </Button>

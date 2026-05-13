@@ -27,6 +27,7 @@ export function CTASection() {
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
+          <span className="text-sm text-white/60">or</span>
           <Button
             asChild
             variant="outline"

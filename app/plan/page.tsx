@@ -86,10 +86,10 @@ export default function PlanPage() {
 
         <main className="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
           {/* Personalized Greeting */}
-          <div className="mb-8 text-center">
-            <h1 className="text-xl font-semibold text-foreground sm:text-2xl">
+          <div className="mb-6 text-left">
+            <p className="text-lg text-foreground sm:text-xl">
               <span className="font-bold">{userData.firstName}</span>, you are eligible for a debt resolution program!
-            </h1>
+            </p>
           </div>
 
           {/* Main Debt Resolution Card */}
@@ -300,13 +300,27 @@ export default function PlanPage() {
         </main>
 
         {/* Simple Footer */}
-        <footer className="border-t border-border bg-card py-6">
+        <footer className="border-t border-border bg-card py-6 pb-24 sm:pb-6">
           <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
             <p className="text-sm text-muted-foreground">
               &copy; {new Date().getFullYear()} NonoDebt. All rights reserved.
             </p>
           </div>
         </footer>
+
+        {/* Sticky Mobile CTA */}
+        <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-border bg-card p-4 shadow-lg sm:hidden">
+          <Button
+            asChild
+            size="lg"
+            className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
+          >
+            <a href="tel:1-800-000-0000">
+              <Phone className="mr-2 h-4 w-4" />
+              (800) 000-0000
+            </a>
+          </Button>
+        </div>
       </div>
     </TooltipProvider>
   )

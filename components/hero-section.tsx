@@ -61,27 +61,7 @@ export function HeroSection() {
               </div>
             </div>
 
-            {/* Accreditations */}
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-6 border-t border-border pt-8 lg:justify-start">
-              <div className="flex flex-col items-center gap-1 text-center">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                  <span className="text-xs font-bold text-primary">BBB</span>
-                </div>
-                <span className="text-xs text-muted-foreground">A+ Rated</span>
-              </div>
-              <div className="flex flex-col items-center gap-1 text-center">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                  <span className="text-xs font-bold text-primary">IAPDA</span>
-                </div>
-                <span className="text-xs text-muted-foreground">Certified</span>
-              </div>
-              <div className="flex flex-col items-center gap-1 text-center">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                  <span className="text-xs font-bold text-primary">AFCC</span>
-                </div>
-                <span className="text-xs text-muted-foreground">Member</span>
-              </div>
-            </div>
+
           </div>
 
           {/* Right Column - Lead Form */}

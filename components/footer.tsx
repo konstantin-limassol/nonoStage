@@ -13,11 +13,11 @@ export function Footer() {
                 <span className="text-lg font-bold text-primary-foreground">N</span>
               </div>
               <span className="text-xl font-semibold tracking-tight text-foreground">
-                Nono<span className="text-primary">Debt</span>
+                NoNo<span className="text-primary">Debt</span>
               </span>
             </Link>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
-              NonoDebt connects consumers with certified debt relief specialists.
+              NoNoDebt connects consumers with certified debt relief specialists.
               We are a lead generation service and do not provide debt relief services directly.
             </p>
           </div>
@@ -105,7 +105,7 @@ export function Footer() {
         <div className="mt-12 border-t border-border pt-8">
           <div className="space-y-4 text-xs leading-relaxed text-muted-foreground">
             <p>
-              <strong>IMPORTANT DISCLOSURES:</strong> NonoDebt is a marketing lead generator
+              <strong>IMPORTANT DISCLOSURES:</strong> NoNoDebt is a marketing lead generator
               and is not a lender, debt settlement company, debt consolidation company,
               or credit counseling service. By submitting your information, you are
               requesting to be contacted by one or more of our partner companies who may
@@ -127,7 +127,7 @@ export function Footer() {
             </p>
             <p>
               By submitting the form on this website, you consent to receive calls and
-              SMS/text messages from NonoDebt and its marketing partners at the phone
+              SMS/text messages from NoNoDebt and its marketing partners at the phone
               number provided, including calls made using an automatic telephone dialing
               system or prerecorded voice. Consent is not a condition of purchase.
               Message and data rates may apply. Reply STOP to opt-out of text messages.
@@ -138,7 +138,7 @@ export function Footer() {
         {/* Copyright */}
         <div className="mt-8 border-t border-border pt-8 text-center">
           <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} NonoDebt. All rights reserved.
+            &copy; {new Date().getFullYear()} NoNoDebt. All rights reserved.
           </p>
         </div>
       </div>

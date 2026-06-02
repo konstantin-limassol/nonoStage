@@ -9,7 +9,7 @@ const steps = [
   },
   {
     icon: UserCheck,
-    title: "Get Matched with a Specialist",
+    title: "Get Connected with a Specialist",
     description:
       "Based on your needs, you will be connected with a certified debt relief specialist in your area.",
   },

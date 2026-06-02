@@ -258,7 +258,7 @@ export function LeadForm() {
             <div className="rounded-lg bg-secondary/50 p-3">
               <p className="text-xs leading-relaxed text-muted-foreground">
                 Clicking &quot;Get My Free Quote&quot;, I consent to receive calls and text messages,
-                including by autodialer and prerecorded voice, from NonoDebt and its
+                including by autodialer and prerecorded voice, from NoNoDebt and its
                 marketing partners at the phone number provided. I understand consent
                 is not a condition of purchase. Message and data rates may apply.
                 Reply STOP to opt-out.

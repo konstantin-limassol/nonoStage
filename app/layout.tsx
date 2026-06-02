@@ -9,7 +9,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: 'NonoDebt - Say No to Debt. Say Yes to Freedom.',
+  title: 'NoNoDebt - Say No to Debt. Say Yes to Freedom.',
   description: 'Connect with certified debt relief specialists. Get a free consultation and discover how you could reduce your debt by up to 50%. No obligation, no upfront fees.',
   generator: 'v0.app',
   icons: {

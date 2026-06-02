@@ -90,7 +90,7 @@ export default function PlanPage() {
         <header className="sticky top-0 z-50 border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80">
           <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
             <Link href="/" className="text-xl font-bold tracking-tight text-foreground">
-              Nono<span className="text-accent">Debt</span>
+              NoNo<span className="text-accent">Debt</span>
             </Link>
             <a
               href="tel:1-800-000-0000"
@@ -321,7 +321,7 @@ export default function PlanPage() {
         <footer className="border-t border-border bg-card py-6 pb-24 sm:pb-6">
           <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
             <p className="text-sm text-muted-foreground">
-              &copy; {new Date().getFullYear()} NonoDebt. All rights reserved.
+              &copy; {new Date().getFullYear()} NoNoDebt. All rights reserved.
             </p>
           </div>
         </footer>

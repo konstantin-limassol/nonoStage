@@ -1,6 +1,12 @@
+"use client"
+
 import Link from "next/link"
 import { ArrowRight, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import {
+  handleScrollToLeadForm,
+  LEAD_FORM_SECTION_ID,
+} from "@/lib/scroll-to-lead-form"
 
 export function CTASection() {
   return (
@@ -22,7 +28,10 @@ export function CTASection() {
 
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Button asChild size="lg" className="w-full bg-accent text-accent-foreground hover:bg-accent/90 sm:w-auto">
-            <Link href="#get-started">
+            <Link
+              href={`#${LEAD_FORM_SECTION_ID}`}
+              onClick={handleScrollToLeadForm}
+            >
               Get Your Free Quote
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>

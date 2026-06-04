@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { Toaster } from '@/components/ui/sonner'
 import './globals.css'
 
 const poppins = Poppins({ 
@@ -40,6 +41,7 @@ export default function RootLayout({
     <html lang="en" className="bg-background">
       <body className={`${poppins.className} antialiased`}>
         {children}
+        <Toaster richColors closeButton />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

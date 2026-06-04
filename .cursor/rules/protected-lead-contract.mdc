@@ -1,0 +1,14 @@
+---
+description: Do not change MoneyFor lead/validation contracts unless explicitly asked
+alwaysApply: true
+---
+
+# Protected lead & MoneyFor contracts
+
+See root `AGENTS.md` for full list. Summary:
+
+- **Validation**: `lib/validation.ts`, `lib/validate-form.ts`, `lib/normalize-form.ts`, `constants/debt-options.ts`
+- **MF API**: `lib/moneyfor/**`, `app/api/lead/route.ts`, `lib/submit-lead.ts`
+- **Form logic**: `components/lead-form.tsx` submit/validate flow, `components/phone-input.tsx` digit storage
+
+Visual/UI edits elsewhere are allowed. Override only on explicit user request naming the file or behavior.

@@ -46,14 +46,13 @@ export async function postLeadToMoneyfor(
       lastName: body.lastName,
       email: body.email,
       phone: body.phone,
-      source: LEAD_POST_SOURCE,
     },
     clientMeta,
   )
 
   const payload: MoneyforLeadPostRequest = {
     campaignId: config.campaignId,
-    source: leadData.source,
+    source: LEAD_POST_SOURCE,
     leadData,
     ...(body.subId1 ? { subId1: body.subId1 } : {}),
     ...(body.pathName ? { pathName: body.pathName } : {}),

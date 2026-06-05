@@ -27,7 +27,7 @@ Secrets: `.env.local` locally; Vercel env vars in deploy. Never commit real API 
 
 - `lib/moneyfor/post-lead.ts` — MF payload `{ campaignId, source, leadData, subId1?, pathName? }`; top-level `source` and `leadData.source` = `LEAD_POST_SOURCE`; `Authorization`; MF accept → `redirectURL`; errors → hard offer URL.
 - `lib/moneyfor/map-form-to-lead-data.ts` — camelCase form → snake_case `leadData` (`debt_amount`, `home_phone`, `source`, optional `client_user_agent` / `client_ip` / `client_browser_referer`).
-- `lib/moneyfor/types.ts` — `MoneyforLeadData`, `MoneyforLeadPostRequest`, `LeadMapInput`, `LeadClientMeta`, proxy request/response types.
+- `lib/moneyfor/types.ts` — `MoneyforLeadData`, `MoneyforLeadPostRequest`, `LeadClientMeta`, proxy request/response types.
 - `lib/moneyfor/config.ts` — env names (`NONODEBT_MONEYFOR_*`); `campaignId` = **campaign alias** in admin (not `uniqueKey`); `publisher` for `Authorization` header only.
 - `lib/moneyfor/client-request-meta.ts` — server-side `client_user_agent`, `client_ip`, `client_browser_referer` from incoming proxy request headers.
 - `lib/moneyfor/proxy.ts` — `LEAD_PROXY_PREFIX=/api/lead`, `MF_LEAD_POST_PATH=api/lead/post`.
@@ -38,7 +38,7 @@ Secrets: `.env.local` locally; Vercel env vars in deploy. Never commit real API 
 
 ### Client → proxy contract
 
-- `lib/submit-lead.ts` — POST body: form fields + `source` (`LEAD_POST_SOURCE`) + `subId1` / `pathName`; MF payload still built server-side from `LEAD_POST_SOURCE`.
+- `lib/submit-lead.ts` — POST body: form fields + `subId1` / `pathName` (no `source`; server sets from `LEAD_POST_SOURCE`).
 - `lib/form-types.ts` — `FormData` keys must stay aligned with the form and API.
 - `lib/url-params.ts`, `lib/session-id.ts` — tracking/session behavior.
 

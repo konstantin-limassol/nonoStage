@@ -13,7 +13,6 @@ describe("mapFormToMoneyforLeadData", () => {
         lastName: " User ",
         email: " test@example.com ",
         phone: "5551234567",
-        source: LEAD_POST_SOURCE,
       },
       {
         client_ip: "203.0.113.1",

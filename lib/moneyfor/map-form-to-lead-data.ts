@@ -1,12 +1,13 @@
+import type { FormData } from "@/lib/form-types"
 import { normalizeFormData } from "@/lib/normalize-form"
-import type { LeadClientMeta, LeadMapInput, MoneyforLeadData } from "@/lib/moneyfor/types"
+import { LEAD_POST_SOURCE } from "@/lib/moneyfor/constants"
+import type { LeadClientMeta, MoneyforLeadData } from "@/lib/moneyfor/types"
 
 export function mapFormToMoneyforLeadData(
-  data: LeadMapInput,
+  data: FormData,
   clientMeta: LeadClientMeta = {},
 ): MoneyforLeadData {
-  const { source, ...formData } = data
-  const normalized = normalizeFormData(formData)
+  const normalized = normalizeFormData(data)
 
   return {
     debt_amount: normalized.debtAmount,
@@ -16,7 +17,7 @@ export function mapFormToMoneyforLeadData(
     last_name: normalized.lastName,
     email: normalized.email,
     home_phone: normalized.phone,
-    source,
+    source: LEAD_POST_SOURCE,
     ...clientMeta,
   }
 }

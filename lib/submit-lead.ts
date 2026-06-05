@@ -3,7 +3,7 @@
 import type { FormData } from "@/lib/form-types"
 import { getOrCreateSessionId } from "@/lib/session-id"
 import { getSubmitParams } from "@/lib/url-params"
-import { LEAD_POST_SOURCE, LEAD_POST_TIMEOUT_MS } from "@/lib/moneyfor/constants"
+import { LEAD_POST_TIMEOUT_MS } from "@/lib/moneyfor/constants"
 import { LEAD_PROXY_PREFIX } from "@/lib/moneyfor/proxy"
 import type {
   LeadProxyErrorResponse,
@@ -23,7 +23,6 @@ export async function submitLead(
     signal: AbortSignal.timeout(LEAD_POST_TIMEOUT_MS + 2_000),
     body: JSON.stringify({
       ...formData,
-      source: LEAD_POST_SOURCE,
       pathName: params.pathName,
       subId1: getOrCreateSessionId(),
     }),

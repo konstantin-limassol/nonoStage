@@ -12,15 +12,14 @@ export type MoneyforLeadData = {
   last_name: string
   email: string
   home_phone: string
+  source: string
 } & LeadClientMeta
 
 export type MoneyforLeadPostRequest = {
   campaignId: string
   leadData: MoneyforLeadData
-  source?: string
   subId1?: string
   pathName?: string
-  [key: string]: string | MoneyforLeadData | undefined
 }
 
 export type MoneyforLeadPostStatus = "accepted" | "rejected"
@@ -40,7 +39,6 @@ export type LeadProxyClientBody = {
   lastName: string
   email: string
   phone: string
-  source?: string
   subId1?: string
   pathName?: string
 }

@@ -14,6 +14,7 @@ import { MF_LEAD_POST_PATH } from "@/lib/moneyfor/proxy"
 import type {
   LeadClientMeta,
   LeadProxyClientBody,
+  MoneyforLeadPostRequest,
   MoneyforLeadPostResponse,
 } from "@/lib/moneyfor/types"
 import { mapFormToMoneyforLeadData } from "@/lib/moneyfor/map-form-to-lead-data"
@@ -40,7 +41,7 @@ export async function postLeadToMoneyfor(
 ): Promise<PostLeadResult> {
   const config = getMoneyforContractsConfig()
 
-  const payload = {
+  const payload: MoneyforLeadPostRequest = {
     campaignId: config.campaignId,
     leadData: mapFormToMoneyforLeadData(
       {
@@ -52,9 +53,9 @@ export async function postLeadToMoneyfor(
         email: body.email,
         phone: body.phone,
       },
+      config.publisher,
       clientMeta,
     ),
-    source: config.publisher,
     ...(body.subId1 ? { subId1: body.subId1 } : {}),
     ...(body.pathName ? { pathName: body.pathName } : {}),
   }

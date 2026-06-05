@@ -25,19 +25,20 @@ Secrets: `.env.local` locally; Vercel env vars in deploy. Never commit real API 
 
 ### MoneyFor lead API (server)
 
-- `lib/moneyfor/post-lead.ts` — payload shape, `Authorization`, MF accept → `redirectURL`; errors → hard offer URL (`lib/moneyfor/hard-offer-url.ts`, `constants.ts` origins + `correlationId` rules).
-- `lib/moneyfor/map-form-to-lead-data.ts` — camelCase form → snake_case `leadData` (`debt_amount`, `home_phone`, etc.).
-- `lib/moneyfor/types.ts` — `MoneyforLeadData`, `MoneyforLeadPostRequest`, proxy request/response types.
-- `lib/moneyfor/config.ts` — env names (`NONODEBT_MONEYFOR_*`), `campaignId` = **campaign alias** in admin (not `uniqueKey`).
+- `lib/moneyfor/post-lead.ts` — MF payload `{ campaignId, leadData, subId1?, pathName? }`; `Authorization`; MF accept → `redirectURL`; errors → hard offer URL.
+- `lib/moneyfor/map-form-to-lead-data.ts` — camelCase form → snake_case `leadData` (`debt_amount`, `home_phone`, `source`, optional `client_user_agent` / `client_ip` / `client_browser_referer`); `source` = `config.publisher`.
+- `lib/moneyfor/types.ts` — `MoneyforLeadData`, `MoneyforLeadPostRequest`, `LeadClientMeta`, proxy request/response types.
+- `lib/moneyfor/config.ts` — env names (`NONODEBT_MONEYFOR_*`); `campaignId` = **campaign alias** in admin (not `uniqueKey`); `publisher` (`NONODEBT_MONEYFOR_CONTRACTS_PUBLISHER`, e.g. `nonodebt`) = `leadData.source` and hard-offer redirect `source` query param.
+- `lib/moneyfor/client-request-meta.ts` — server-side `client_user_agent`, `client_ip`, `client_browser_referer` from incoming proxy request headers.
 - `lib/moneyfor/proxy.ts` — `LEAD_PROXY_PREFIX=/api/lead`, `MF_LEAD_POST_PATH=api/lead/post`.
 - `lib/moneyfor/fetch-to-mf.ts`, `lib/utils/domains.ts` — MF base URL (`moneyfor.com` / `moneyfor.devpr.net` / `NEXT_PUBLIC_DOMAIN_MF`).
-- `lib/moneyfor/constants.ts` — `LEAD_POST_TIMEOUT_MS`, hard-offer origins/path (not env-driven). Hard-offer `source` = `NONODEBT_MONEYFOR_CONTRACTS_PUBLISHER`.
-- `lib/moneyfor/hard-offer-url.ts` — surveys1 redirect URL and `correlationId` resolution.
-- `app/api/lead/route.ts` — thin POST handler; no extra client-side validation here.
+- `lib/moneyfor/constants.ts` — `LEAD_POST_TIMEOUT_MS`, hard-offer origins/path only (not env-driven; no `source` here).
+- `lib/moneyfor/hard-offer-url.ts` — surveys1 redirect URL; `source` param passed from `config.publisher`; `correlationId` resolution.
+- `app/api/lead/route.ts` — thin POST handler; `getClientRequestMeta(request)` → `postLeadToMoneyfor`; no extra client-side validation here.
 
 ### Client → proxy contract
 
-- `lib/submit-lead.ts` — POST body fields and `subId1` / `source` / `pathName` wiring.
+- `lib/submit-lead.ts` — POST body: form fields + `subId1` / `pathName` (no `source`; server sets from config).
 - `lib/form-types.ts` — `FormData` keys must stay aligned with the form and API.
 - `lib/url-params.ts`, `lib/session-id.ts` — tracking/session behavior.
 
@@ -65,4 +66,4 @@ If a manager asks in v0 chat to “fix validation” or “change the API” **w
 
 ## Reference
 
-MoneyFor: `POST /api/lead/post` with `campaignId` + `leadData`. Docs in monorepo: `moneyfor/docs/modules/reject-listing/lead/`.
+MoneyFor: `POST /api/lead/post` with `campaignId`, `leadData` (form fields + `source` + optional client metadata), optional `subId1` / `pathName`. Docs in monorepo: `moneyfor/docs/modules/reject-listing/lead/`.

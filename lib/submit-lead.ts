@@ -23,7 +23,6 @@ export async function submitLead(
     signal: AbortSignal.timeout(LEAD_POST_TIMEOUT_MS + 2_000),
     body: JSON.stringify({
       ...formData,
-      source: params.source,
       pathName: params.pathName,
       subId1: getOrCreateSessionId(),
     }),

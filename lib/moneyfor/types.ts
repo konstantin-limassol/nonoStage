@@ -1,3 +1,9 @@
+import type { FormData } from "@/lib/form-types"
+
+export type LeadMapInput = FormData & {
+  source: string
+}
+
 export type LeadClientMeta = {
   client_user_agent?: string
   client_ip?: string
@@ -17,6 +23,7 @@ export type MoneyforLeadData = {
 
 export type MoneyforLeadPostRequest = {
   campaignId: string
+  source: string
   leadData: MoneyforLeadData
   subId1?: string
   pathName?: string

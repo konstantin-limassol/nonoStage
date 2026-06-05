@@ -1,4 +1,4 @@
-import { LEAD_POST_TIMEOUT_MS } from "@/lib/moneyfor/constants"
+import { LEAD_POST_SOURCE, LEAD_POST_TIMEOUT_MS } from "@/lib/moneyfor/constants"
 import {
   getAuthorizationHeader,
   getMoneyforContractsConfig,
@@ -23,15 +23,11 @@ export type PostLeadResult =
   | { ok: true; leadId: string; redirectUrl: string }
   | { ok: false; message: string }
 
-function hardOfferResult(
-  publisher: string,
-  correlationId: string,
-  leadId = "",
-): PostLeadResult {
+function hardOfferResult(correlationId: string, leadId = ""): PostLeadResult {
   return {
     ok: true,
     leadId,
-    redirectUrl: buildHardOfferRedirectUrl(correlationId, publisher),
+    redirectUrl: buildHardOfferRedirectUrl(correlationId, LEAD_POST_SOURCE),
   }
 }
 
@@ -41,21 +37,24 @@ export async function postLeadToMoneyfor(
 ): Promise<PostLeadResult> {
   const config = getMoneyforContractsConfig()
 
+  const leadData = mapFormToMoneyforLeadData(
+    {
+      debtAmount: body.debtAmount,
+      debtType: body.debtType,
+      state: body.state,
+      firstName: body.firstName,
+      lastName: body.lastName,
+      email: body.email,
+      phone: body.phone,
+      source: LEAD_POST_SOURCE,
+    },
+    clientMeta,
+  )
+
   const payload: MoneyforLeadPostRequest = {
     campaignId: config.campaignId,
-    leadData: mapFormToMoneyforLeadData(
-      {
-        debtAmount: body.debtAmount,
-        debtType: body.debtType,
-        state: body.state,
-        firstName: body.firstName,
-        lastName: body.lastName,
-        email: body.email,
-        phone: body.phone,
-      },
-      config.publisher,
-      clientMeta,
-    ),
+    source: leadData.source,
+    leadData,
     ...(body.subId1 ? { subId1: body.subId1 } : {}),
     ...(body.pathName ? { pathName: body.pathName } : {}),
   }
@@ -73,27 +72,18 @@ export async function postLeadToMoneyfor(
       signal: AbortSignal.timeout(LEAD_POST_TIMEOUT_MS),
     })
   } catch (error) {
-    return hardOfferResult(
-      config.publisher,
-      correlationIdFromFetchError(error),
-    )
+    return hardOfferResult(correlationIdFromFetchError(error))
   }
 
   if (!response.ok) {
-    return hardOfferResult(
-      config.publisher,
-      correlationIdFromHttpResponse(response),
-    )
+    return hardOfferResult(correlationIdFromHttpResponse(response))
   }
 
   let result: MoneyforLeadPostResponse
   try {
     result = (await response.json()) as MoneyforLeadPostResponse
   } catch {
-    return hardOfferResult(
-      config.publisher,
-      correlationIdFromHttpResponse(response),
-    )
+    return hardOfferResult(correlationIdFromHttpResponse(response))
   }
 
   if (
@@ -109,9 +99,5 @@ export async function postLeadToMoneyfor(
   }
 
   const leadId = result.leadId ?? ""
-  return hardOfferResult(
-    config.publisher,
-    correlationIdFromMfReject(leadId),
-    leadId,
-  )
+  return hardOfferResult(correlationIdFromMfReject(leadId), leadId)
 }

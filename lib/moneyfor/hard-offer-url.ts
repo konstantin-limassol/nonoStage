@@ -9,7 +9,7 @@ export function getHardOfferOrigin(): string {
   return isProdLocation() ? HARD_OFFER_ORIGIN_PROD : HARD_OFFER_ORIGIN_STAGING
 }
 
-/** `source` must match `NONODEBT_MONEYFOR_CONTRACTS_PUBLISHER` (MF publisher name). */
+/** `source` must match `LEAD_POST_SOURCE` in `constants.ts` (e.g. `nonodebt`). */
 export function buildHardOfferRedirectUrl(
   correlationId: string,
   source: string,

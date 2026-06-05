@@ -12,6 +12,7 @@ import {
 } from "@/lib/moneyfor/hard-offer-url"
 import { MF_LEAD_POST_PATH } from "@/lib/moneyfor/proxy"
 import type {
+  LeadClientMeta,
   LeadProxyClientBody,
   MoneyforLeadPostResponse,
 } from "@/lib/moneyfor/types"
@@ -35,21 +36,25 @@ function hardOfferResult(
 
 export async function postLeadToMoneyfor(
   body: LeadProxyClientBody,
+  clientMeta: LeadClientMeta = {},
 ): Promise<PostLeadResult> {
   const config = getMoneyforContractsConfig()
 
   const payload = {
     campaignId: config.campaignId,
-    leadData: mapFormToMoneyforLeadData({
-      debtAmount: body.debtAmount,
-      debtType: body.debtType,
-      state: body.state,
-      firstName: body.firstName,
-      lastName: body.lastName,
-      email: body.email,
-      phone: body.phone,
-    }),
-    source: body.source ?? "",
+    leadData: mapFormToMoneyforLeadData(
+      {
+        debtAmount: body.debtAmount,
+        debtType: body.debtType,
+        state: body.state,
+        firstName: body.firstName,
+        lastName: body.lastName,
+        email: body.email,
+        phone: body.phone,
+      },
+      clientMeta,
+    ),
+    source: config.publisher,
     ...(body.subId1 ? { subId1: body.subId1 } : {}),
     ...(body.pathName ? { pathName: body.pathName } : {}),
   }

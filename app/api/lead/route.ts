@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { getClientRequestMeta } from "@/lib/moneyfor/client-request-meta"
 import { postLeadToMoneyfor } from "@/lib/moneyfor/post-lead"
 import type { LeadProxyClientBody } from "@/lib/moneyfor/types"
 
@@ -15,7 +16,7 @@ export async function POST(request: Request) {
   }
 
   try {
-    const result = await postLeadToMoneyfor(body)
+    const result = await postLeadToMoneyfor(body, getClientRequestMeta(request))
 
     if (!result.ok) {
       return NextResponse.json(result, { status: 502 })

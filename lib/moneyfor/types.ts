@@ -1,3 +1,9 @@
+export type LeadClientMeta = {
+  client_user_agent?: string
+  client_ip?: string
+  client_browser_referer?: string
+}
+
 export type MoneyforLeadData = {
   debt_amount: string
   debt_type: string
@@ -6,7 +12,7 @@ export type MoneyforLeadData = {
   last_name: string
   email: string
   home_phone: string
-}
+} & LeadClientMeta
 
 export type MoneyforLeadPostRequest = {
   campaignId: string

@@ -38,7 +38,7 @@ Secrets: `.env.local` locally; Vercel env vars in deploy. Never commit real API 
 
 ### Client → proxy contract
 
-- `lib/submit-lead.ts` — POST body: form fields + `subId1` / `pathName` (no `source`; server sets from config).
+- `lib/submit-lead.ts` — POST body: form fields + `source` (`LEAD_POST_SOURCE`) + `subId1` / `pathName`; MF payload still built server-side from `LEAD_POST_SOURCE`.
 - `lib/form-types.ts` — `FormData` keys must stay aligned with the form and API.
 - `lib/url-params.ts`, `lib/session-id.ts` — tracking/session behavior.
 

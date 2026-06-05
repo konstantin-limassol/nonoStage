@@ -46,6 +46,7 @@ export type LeadProxyClientBody = {
   lastName: string
   email: string
   phone: string
+  source?: string
   subId1?: string
   pathName?: string
 }
